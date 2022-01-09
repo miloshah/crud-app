@@ -10,13 +10,13 @@ import Loader from '../components/Loader';
 
 const AppRouter = () => {
   const [products, setProducts] = useLocalStorage('products', []);
-  const [loading, setloading] = useState(true); // Pre-loader before page renders
+  const [loading, setLoading] = useState(true); // Pre-loader before page renders
 
   useEffect(() => {
     setTimeout(() => {
-        setloading(false); 
+        setLoading(false); 
     }, 1000);
-  }, []);
+  }, [loading]);
 
   return (
     <>
@@ -30,20 +30,20 @@ const AppRouter = () => {
                 <Switch>
                   <Route
                     render={(props) => (
-                      <ProductsList {...props} products={products} setProducts={setProducts} />
+                      <ProductsList {...props} products={products} setProducts={setProducts} loading={loading} setLoading={setLoading} />
                     )}
                     path="/"
                     exact={true}
                   />
                   <Route
                     render={(props) => (
-                      <AddProduct {...props} products={products} setProducts={setProducts} />
+                      <AddProduct {...props} products={products} setProducts={setProducts} loading={loading} setLoading={setLoading}/>
                     )}
                     path="/add"
                   />
                   <Route
                     render={(props) => (
-                      <EditProduct {...props} products={products} setProducts={setProducts} />
+                      <EditProduct {...props} products={products} setProducts={setProducts} loading={loading} setLoading={setLoading} />
                     )}
                     path="/edit/:id"
                   />

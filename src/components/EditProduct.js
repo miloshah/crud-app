@@ -2,14 +2,14 @@ import React from 'react';
 import ProductForm from './ProductForm';
 import { useParams } from 'react-router-dom';
 
-const EditProduct = ({ history, products, setProducts }) => {
+const EditProduct = ({ history, products, setProducts, loading, setLoading }) => {
   const { id } = useParams();
   const productToEdit = products.find((product) => product.id === id);
 
   const handleOnSubmit = (product) => {
-    console.log(product, 'from edit product');
     const filteredProducts = products.filter((product) => product.id !== id);
     setProducts([product, ...filteredProducts]);
+    setLoading((loading) => !loading);
     history.push('/');
   };
 

@@ -11,7 +11,6 @@ const useLocalStorage = (key, initialValue) => {
   });
 
   useEffect(() => {
-    console.log("useLocalStorageHook");
     window.localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
