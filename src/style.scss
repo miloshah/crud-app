@@ -1,6 +1,6 @@
 @tailwind base;
-
 @tailwind components;
+@tailwind utilities;
 
 .todo-item {
   transition: 0.2s ease-in-out;
@@ -9,6 +9,7 @@
   &.active {
     @apply border-orange-500;
   }
+
   &.completed {
     @apply border-green-400 text-gray-600;
   }
@@ -18,8 +19,8 @@
   @apply px-5;
 }
 
-.header{
-  .active{
+.header {
+  .active {
     @apply bg-opacity-100;
   }
 }
@@ -29,13 +30,24 @@
   max-width: 15%;
 }
 
-@tailwind utilities;
-
 html,
 body {
   height: 100%;
 }
 
 body {
-    @apply p-8 sm:p-16 bg-gray-800 text-white;
+  @apply p-8 sm:p-16 bg-gray-800 text-white;
+}
+
+.search-input {
+  color: white;
+
+  &::placeholder {
+    color: white;
+
+  }
+
+  &:focus {
+    outline: none;
+  }
 }

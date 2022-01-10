@@ -6,18 +6,18 @@ const ProductForm = (props) => {
   const [product, setProduct] = useState(() => {
     return {
       productname: props.product ? props.product.productname : '',
-      author: props.product ? props.product.author : '',
+      tax: props.product ? props.product.tax : '',
       quantity: props.product ? props.product.quantity : '',
       price: props.product ? props.product.price : '',
       date: props.product ? props.product.date : ''
     };
   });
   const [errorMsg, setErrorMsg] = useState('');
-  const { productname, author, price, quantity } = product;
+  const { productname, tax, price, quantity } = product;
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    const values = [productname, author, price, quantity];
+    const values = [productname, tax, price, quantity];
     let errorMsg = '';
 
     const allFieldsFilled = values.every((field) => {
@@ -29,7 +29,7 @@ const ProductForm = (props) => {
       const product = {
         id: uuidv4(),
         productname,
-        author,
+        tax,
         price,
         quantity,
         date: new Date()
@@ -83,14 +83,14 @@ const ProductForm = (props) => {
             onChange={handleInputChange}
           />
         </Form.Group>
-        <Form.Group controlId="author">
-          <Form.Label>Product Author</Form.Label>
+        <Form.Group controlId="tax">
+          <Form.Label>Product Tax</Form.Label>
           <Form.Control
             className="input-control"
             type="text"
-            name="author"
-            value={author}
-            placeholder="Enter name of author"
+            name="tax"
+            value={tax}
+            placeholder="Tax amount"
             onChange={handleInputChange}
           />
         </Form.Group>
